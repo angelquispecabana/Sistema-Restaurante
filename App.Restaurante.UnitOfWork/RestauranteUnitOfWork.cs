@@ -12,9 +12,21 @@ namespace App.Restaurante.UnitOfWork
     {
         public RestauranteUnitOfWork(string connectionString)
         {
-            Platos = new PlatoRepository(connectionString);           
+            Platos = new PlatoRepository(connectionString);
+            Proveedores = new ProveedorRepository(connectionString);
+            VentasCabecera = new VentaCabeceraRepository(connectionString);
         }
         public IPlatoRepository Platos
+        {
+            get;
+            private set;
+        }
+        public IVentaCabeceraRepository VentasCabecera
+        {
+            get;
+            private set;
+        }
+        public IProveedorRepository Proveedores
         {
             get;
             private set;

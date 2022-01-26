@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPlatoRepository.cs" />
+    <Compile Include="IProveedorRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IVentaCabeceraRepository.cs" />
+    <Compile Include="IVentaDetalleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
