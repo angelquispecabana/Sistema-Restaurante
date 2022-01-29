@@ -20,10 +20,9 @@ namespace App.Restaurante.Repositories.Dapper
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@idPlato", idPlato);
-                return connection.QueryAsync<Plato>("select IdPlato, Descripcion, Precio, IdSubGrupo, IdUnidad, Estado from dbo.Plato " +
-                                                    "where IdPlato = @idPlato", parameters,
-                                                    commandType: System.Data.CommandType.Text);
+                parameters.Add("@IdPlato", idPlato);
+                return connection.QueryAsync<Plato>("dbo.usp_BuscarPlato", parameters,
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
         public Task<IEnumerable<Plato>> Listar(string descripcion)
@@ -31,10 +30,9 @@ namespace App.Restaurante.Repositories.Dapper
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@descripcion", descripcion);
-                return connection.QueryAsync<Plato>("select IdPlato, Descripcion, Precio, IdSubGrupo, IdUnidad, Estado from dbo.Plato " +
-                                                    "where Descripcion like '%@descripcion%'", parameters,
-                                                    commandType: System.Data.CommandType.Text);
+                parameters.Add("@Descripcion", descripcion);
+                return connection.QueryAsync<Plato, SubGrupo, Plato>("dbo.usp_ListarPlatos", (objPlato, objSubGrupo) => { objPlato.SubGrupo = objSubGrupo; return objPlato; }, parameters,                                                    
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
         public Task<int> Eliminar(int idPlato)

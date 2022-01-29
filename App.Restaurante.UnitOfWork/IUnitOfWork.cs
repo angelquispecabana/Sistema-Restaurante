@@ -10,7 +10,8 @@ namespace App.Restaurante.UnitOfWork
     public interface IUnitOfWork
     {
         IPlatoRepository Platos { get; }
-        IVentaCabeceraRepository VentasCabecera { get; }
+        ISubGrupoRepository SubGrupos { get; }
+        //IVentaCabeceraRepository VentasCabecera { get; }
         IProveedorRepository Proveedores { get; }
     }
 }

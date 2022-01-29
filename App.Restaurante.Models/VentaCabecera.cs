@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace App.Restaurante.Models
 {
     public class VentaCabecera
     {
+        [ExplicitKey]
         public int IdVenta { get; set; }
         public int IdCliente { get; set; }
         public string Cliente { get; set; }

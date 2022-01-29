@@ -14,19 +14,25 @@ namespace App.Restaurante.UnitOfWork
         {
             Platos = new PlatoRepository(connectionString);
             Proveedores = new ProveedorRepository(connectionString);
-            VentasCabecera = new VentaCabeceraRepository(connectionString);
+            SubGrupos = new SubGrupoRepository(connectionString);
+            //VentasCabecera = new VentaCabeceraRepository(connectionString);
         }
         public IPlatoRepository Platos
         {
             get;
             private set;
         }
-        public IVentaCabeceraRepository VentasCabecera
+        //public IVentaCabeceraRepository VentasCabecera
+        //{
+        //    get;
+        //    private set;
+        //}
+        public IProveedorRepository Proveedores
         {
             get;
             private set;
         }
-        public IProveedorRepository Proveedores
+        public ISubGrupoRepository SubGrupos
         {
             get;
             private set;

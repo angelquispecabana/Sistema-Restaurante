@@ -9,7 +9,6 @@ namespace App.Restaurante.Models
 {
     public class Grupo
     {
-        [Key]
         public int IdGrupo { get; set; }
         public string Descripcion { get; set; }
         
