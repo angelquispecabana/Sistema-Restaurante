@@ -69,6 +69,7 @@
     <Compile Include="ProveedorRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SubGrupoRepository.cs" />
+    <Compile Include="TurnoRepository.cs" />
     <Compile Include="VentaCabeceraRepository.cs" />
   </ItemGroup>
   <ItemGroup>

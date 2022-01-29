@@ -13,5 +13,6 @@ namespace App.Restaurante.UnitOfWork
         ISubGrupoRepository SubGrupos { get; }
         //IVentaCabeceraRepository VentasCabecera { get; }
         IProveedorRepository Proveedores { get; }
+        ITurnoRepository Turnos { get; }
     }
 }

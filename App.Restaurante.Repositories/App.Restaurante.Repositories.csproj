@@ -45,6 +45,7 @@
     <Compile Include="IProveedorRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISubGrupoRepository.cs" />
+    <Compile Include="ITurnoRepository.cs" />
     <Compile Include="IVentaCabeceraRepository.cs" />
     <Compile Include="IVentaDetalleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

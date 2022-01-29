@@ -143,6 +143,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlatoController.cs" />
     <Compile Include="Controllers\SubGrupoController.cs" />
+    <Compile Include="Controllers\TurnoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2046,6 +2047,9 @@
     <Content Include="Views\Plato\_Create.cshtml" />
     <Content Include="Views\Plato\_Edit.cshtml" />
     <Content Include="Views\Plato\_Delete.cshtml" />
+    <Content Include="Views\Turno\Create.cshtml" />
+    <Content Include="Views\Turno\Edit.cshtml" />
+    <Content Include="Views\Turno\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

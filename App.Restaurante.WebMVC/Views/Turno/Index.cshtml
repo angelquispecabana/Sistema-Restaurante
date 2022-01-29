@@ -1,0 +1,80 @@
+﻿@model IEnumerable<App.Restaurante.Models.Turno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoCambio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUsuarioApertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaHoraApertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImporteApertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUsuarioCierre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaHoraCierre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImporteCierre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoCambio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUsuarioApertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaHoraApertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImporteApertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUsuarioCierre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaHoraCierre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImporteCierre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.IdTurno }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Cierre", "Cierre", new { id = item.IdTurno }, new { @class = "btn btn-danger", @OnClick = "return confirm('Seguro de Cerrar el turno?');" })
+        </td>
+    </tr>
+}
+
+</table>
