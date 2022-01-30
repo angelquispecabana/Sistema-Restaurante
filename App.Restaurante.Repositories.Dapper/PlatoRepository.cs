@@ -15,36 +15,36 @@ namespace App.Restaurante.Repositories.Dapper
         public PlatoRepository(string connectionString) : base(connectionString)
         {
         }
-        public Task<IEnumerable<Plato>> BuscarPorId(int idPlato)
+        public async Task<IEnumerable<Plato>> BuscarPorId(int idPlato)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@IdPlato", idPlato);
-                return connection.QueryAsync<Plato>("dbo.usp_BuscarPlato", parameters,
+                return await connection.QueryAsync<Plato>("dbo.usp_BuscarPlato", parameters,
                                                     commandType: System.Data.CommandType.StoredProcedure);
             }
         }
-        public Task<IEnumerable<Plato>> Listar(string descripcion)
+        public async Task<IEnumerable<Plato>> Listar(string descripcion)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Descripcion", descripcion);
-                return connection.QueryAsync<Plato, SubGrupo, Plato>("dbo.usp_ListarPlatos", (objPlato, objSubGrupo) => { objPlato.SubGrupo = objSubGrupo; return objPlato; }, parameters,                                                    
+                return await connection.QueryAsync<Plato>("dbo.usp_ListarPlatos", parameters,                                                    
                                                     commandType: System.Data.CommandType.StoredProcedure);
             }
         }
-        public Task<int> Eliminar(int idPlato)
+        public async Task<int> Eliminar(int idPlato)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@idPlato", idPlato);
-                return connection.ExecuteAsync("update from dbo.Plato " +
-                                                "set Estado = false " +
-                                                "where IdPlato = @idPlato", parameters,
-                                                commandType: System.Data.CommandType.Text);
+                return await connection.ExecuteAsync("update from dbo.Plato " +
+                                                    "set Estado = false " +
+                                                    "where IdPlato = @idPlato", parameters,
+                                                    commandType: System.Data.CommandType.Text);
             }
         }
     }

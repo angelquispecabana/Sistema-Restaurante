@@ -34,7 +34,7 @@ namespace App.Restaurante.Repositories.Dapper
                 parameters.Add("@idSubGrupo", idSubGrupo);
                 return await connection.ExecuteAsync("update from dbo.SubGrupo " +
                                                 "set Estado = false " +
-                                                "where IdProveedor = @idSubGrupo", parameters,
+                                                "where IdSubGrupo = @idSubGrupo", parameters,
                                                 commandType: System.Data.CommandType.Text);
             }
         }
@@ -45,9 +45,8 @@ namespace App.Restaurante.Repositories.Dapper
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@descripcion", descripcion);
-                return await connection.QueryAsync<SubGrupo>("select IdSubGrupo, Descripcion from dbo.SubGrupo " +
-                                                    "where Descripcion like '%@descripcion%'", parameters,
-                                                    commandType: System.Data.CommandType.Text);
+                return await connection.QueryAsync<SubGrupo>("usp_ListarSubGrupos", parameters,
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
     }

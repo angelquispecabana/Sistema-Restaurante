@@ -17,11 +17,14 @@ namespace App.Restaurante.WebMVC.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            return View(await _unitOfWork.Platos.Listar());
+            var lista = await _unitOfWork.Platos.Listar("");
+            return View(lista);
         }
         [HttpGet]
-        public ActionResult Create() {
-            return PartialView("_Create");
+        public async Task<ActionResult> Create() {
+            Plato plato = new Plato();
+            plato.ListaSubGrupo = await _unitOfWork.SubGrupos.Listar();
+            return PartialView("_Create", plato);
         }
         [HttpPost]
         public async Task<ActionResult> Create(Plato plato) {
@@ -34,6 +37,17 @@ namespace App.Restaurante.WebMVC.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int id) {
             var plato = await _unitOfWork.Platos.Obtener(id);
+            plato.ListaSubGrupo = await _unitOfWork.SubGrupos.Listar();
+            return PartialView("_Edit", plato);
+        }
+        [HttpPost]
+        public async Task<ActionResult> Edit(Plato plato)
+        {
+            if (ModelState.IsValid)
+            {
+                await _unitOfWork.Platos.Modificar(plato);
+                return RedirectToAction("Index");
+            }
             return PartialView("_Edit", plato);
         }
         [HttpGet]

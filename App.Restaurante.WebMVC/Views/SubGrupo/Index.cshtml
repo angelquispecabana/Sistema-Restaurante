@@ -1,45 +1,68 @@
 ﻿@model IEnumerable<App.Restaurante.Models.SubGrupo>
 
-@{
-    ViewBag.Title = "Index";
-}
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Mantenimiento de SubGrupo</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <p class="mb-4">
+                <a href="#" onclick="appRestaurante.getModal('@Url.Action("Create")');" data-toggle="modal"
+                   data-target="#modal-container" class="btn btn-success">
+                    <span class="fa fa-plus"></span> Crear Sub Grupo
 
-<h2>Index</h2>
+                </a>
+            </p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdSubGrupo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion_Grupo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th></th>
+                    </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdSubGrupo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdGrupo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th></th>
-    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdSubGrupo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion_Grupo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                <a href="#" onclick="appRestaurante.getModal('@Url.Action("Edit",new { id = item.IdSubGrupo })');" data-toggle="modal"
+                                   data-target="#modal-container" class="btn btn-success">
+                                    <span class="fa fa-edit"></span> Editar
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdSubGrupo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdGrupo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdSubGrupo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdSubGrupo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdSubGrupo })
-        </td>
-    </tr>
-}
+                                </a>
 
-</table>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IdSubGrupo })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Modal.GetModal("Mantenimiento de SubGrupo")
+<script src="~/App_JS/appRestaurante.js" type="text/javascript"></script>

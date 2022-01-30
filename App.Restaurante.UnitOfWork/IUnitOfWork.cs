@@ -14,5 +14,6 @@ namespace App.Restaurante.UnitOfWork
         //IVentaCabeceraRepository VentasCabecera { get; }
         IProveedorRepository Proveedores { get; }
         ITurnoRepository Turnos { get; }
+        IGrupoRepository Grupos { get; }
     }
 }

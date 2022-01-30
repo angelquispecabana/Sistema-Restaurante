@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<App.Restaurante.Models.Plato>
 
-
-
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Mantenimiento de Platos</h1>
     <div class="card shadow mb-4">
@@ -28,7 +26,7 @@
                             @Html.DisplayNameFor(model => model.Precio)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.SubGrupo.Descripcion)
+                            @Html.DisplayNameFor(model => model.Descripcion_SubGrupo)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Estado)
@@ -49,7 +47,7 @@
                                 @Html.DisplayFor(modelItem => item.Precio)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.SubGrupo.Descripcion)
+                                @Html.DisplayFor(modelItem => item.Descripcion_SubGrupo)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Estado)

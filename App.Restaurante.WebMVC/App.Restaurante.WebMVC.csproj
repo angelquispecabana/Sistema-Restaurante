@@ -2050,6 +2050,8 @@
     <Content Include="Views\Turno\Create.cshtml" />
     <Content Include="Views\Turno\Edit.cshtml" />
     <Content Include="Views\Turno\Index.cshtml" />
+    <Content Include="Views\SubGrupo\_Create.cshtml" />
+    <Content Include="Views\SubGrupo\_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

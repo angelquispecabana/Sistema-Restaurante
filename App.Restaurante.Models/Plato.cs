@@ -15,7 +15,11 @@ namespace App.Restaurante.Models
         public int IdPlato { get; set; }
         public string Descripcion { get; set; }
         public double Precio { get; set; }
-        public SubGrupo SubGrupo { get; set; }
+        public int IdSubGrupo { get; set; }
+        [Computed]
+        public string Descripcion_SubGrupo { get; set; }
         public bool Estado { get; set; }
+        [Computed]
+        public IEnumerable<SubGrupo> ListaSubGrupo { get; set; }
     }
 }
