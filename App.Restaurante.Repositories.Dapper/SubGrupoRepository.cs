@@ -19,10 +19,9 @@ namespace App.Restaurante.Repositories.Dapper
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@idSubGrupo", idSubGrupo);
-                return await connection.QueryAsync<SubGrupo>("select IdSubGrupo, Descripcion from dbo.SubGrupo " +
-                                                    "where IdSubGrupo = @idSubGrupo", parameters,
-                                                    commandType: System.Data.CommandType.Text);
+                parameters.Add("@IdSubGrupo", idSubGrupo);
+                return await connection.QueryAsync<SubGrupo>("usp_BuscarSubGrupo", parameters,
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
 
@@ -32,10 +31,23 @@ namespace App.Restaurante.Repositories.Dapper
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@idSubGrupo", idSubGrupo);
-                return await connection.ExecuteAsync("update from dbo.SubGrupo " +
-                                                "set Estado = false " +
+                return await connection.ExecuteAsync("update dbo.SubGrupo " +
+                                                "set Estado = 0 " +
                                                 "where IdSubGrupo = @idSubGrupo", parameters,
                                                 commandType: System.Data.CommandType.Text);
+            }
+        }
+
+        public async Task<int> Insertar(SubGrupo subGrupo)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Descripcion", subGrupo.Descripcion);
+                parameters.Add("@IdGrupo", subGrupo.IdGrupo);
+                parameters.Add("@Estado", subGrupo.Estado);
+                return await connection.ExecuteAsync("dbo.usp_InsertarSubGrupo", parameters,
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
 
@@ -44,7 +56,7 @@ namespace App.Restaurante.Repositories.Dapper
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@descripcion", descripcion);
+                parameters.Add("@Descripcion", descripcion);
                 return await connection.QueryAsync<SubGrupo>("usp_ListarSubGrupos", parameters,
                                                     commandType: System.Data.CommandType.StoredProcedure);
             }

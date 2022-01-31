@@ -29,8 +29,8 @@ namespace App.Restaurante.WebMVC.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Plato plato) {
             if (ModelState.IsValid) {
-                await _unitOfWork.Platos.Agregar(plato);
-                RedirectToAction("Index");
+                await _unitOfWork.Platos.Insertar(plato);
+                return RedirectToAction("Index");
             }
             return PartialView(plato);
         }
@@ -54,6 +54,14 @@ namespace App.Restaurante.WebMVC.Controllers
         public async Task<ActionResult> Delete(int id) {
             var plato = await _unitOfWork.Platos.Obtener(id);
             return PartialView("_Delete", plato);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<ActionResult> DeletePost(int id)
+        {
+            if ((await _unitOfWork.Platos.Eliminar(id)) != 0) return RedirectToAction("Index");
+
+            return View(await _unitOfWork.Platos.Obtener(id));
         }
 
     }

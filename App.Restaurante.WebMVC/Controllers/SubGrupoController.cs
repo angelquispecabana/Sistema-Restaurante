@@ -32,8 +32,8 @@ namespace App.Restaurante.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _unitOfWork.SubGrupos.Agregar(subGrupo);
-                RedirectToAction("Index");
+                await _unitOfWork.SubGrupos.Insertar(subGrupo);
+                return RedirectToAction("Index");
             }
             return PartialView(subGrupo);
         }
@@ -57,6 +57,14 @@ namespace App.Restaurante.WebMVC.Controllers
         {
             var subgrupo = await _unitOfWork.SubGrupos.Obtener(id);
             return PartialView("_Delete", subgrupo);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<ActionResult> DeletePost(int id)
+        {
+            if ((await _unitOfWork.SubGrupos.Eliminar(id)) != 0) return RedirectToAction("Index");
+
+            return View(await _unitOfWork.SubGrupos.Obtener(id));
         }
     }
 }

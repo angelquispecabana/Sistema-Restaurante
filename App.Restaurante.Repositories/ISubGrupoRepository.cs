@@ -12,5 +12,6 @@ namespace App.Restaurante.Repositories
         Task<IEnumerable<SubGrupo>> BuscarPorId(int idSubGrupo);
         Task<IEnumerable<SubGrupo>> Listar(string descripcion);
         Task<int> Eliminar(int idSubGrupo);
+        Task<int> Insertar(SubGrupo subGrupo);
     }
 }

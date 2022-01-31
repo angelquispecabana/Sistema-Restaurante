@@ -41,10 +41,24 @@ namespace App.Restaurante.Repositories.Dapper
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@idPlato", idPlato);
-                return await connection.ExecuteAsync("update from dbo.Plato " +
-                                                    "set Estado = false " +
+                return await connection.ExecuteAsync("update dbo.Plato " +
+                                                    "set Estado = 0 " +
                                                     "where IdPlato = @idPlato", parameters,
                                                     commandType: System.Data.CommandType.Text);
+            }
+        }
+
+        public async Task<int> Insertar(Plato plato)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Descripcion", plato.Descripcion);
+                parameters.Add("@Precio", plato.Precio);
+                parameters.Add("@IdSubGrupo", plato.IdSubGrupo);
+                parameters.Add("@Estado", plato.Estado);
+                return await connection.ExecuteAsync("dbo.usp_InsertarPlato", parameters,
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
     }
