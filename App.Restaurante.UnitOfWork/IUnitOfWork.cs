@@ -15,5 +15,7 @@ namespace App.Restaurante.UnitOfWork
         IProveedorRepository Proveedores { get; }
         ITurnoRepository Turnos { get; }
         IGrupoRepository Grupos { get; }
+        IPedidoRepository Pedidos { get; }
+        IPedidoDetalleRepository PedidosDetalle { get; }
     }
 }

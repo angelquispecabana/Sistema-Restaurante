@@ -11,5 +11,6 @@ namespace App.Restaurante.Repositories
     {
         Task<IEnumerable<Grupo>> BuscarPorId(int idGrupo);
         Task<int> Eliminar(int idGrupo);
+        Task<int> Insertar(Grupo grupo);
     }
 }

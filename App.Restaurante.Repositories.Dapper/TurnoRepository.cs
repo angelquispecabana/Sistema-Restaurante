@@ -1,16 +1,12 @@
 ﻿using App.Restaurante.Models;
 using Dapper;
-using Dapper.Contrib.Extensions;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace App.Restaurante.Repositories.Dapper
 {
-    public class TurnoRepository: Repository<Turno>, ITurnoRepository
+    public class TurnoRepository : Repository<Turno>, ITurnoRepository
     {
         public TurnoRepository(string connectionString) : base(connectionString)
         {
@@ -34,7 +30,15 @@ namespace App.Restaurante.Repositories.Dapper
             }
         }
 
-        public Task<int> Apertura(Turno turno)
+        public IEnumerable<Turno> ListarSinTask()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Query<Turno>("usp_TurnoListar", null, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<int> Apertura(Turno turno)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -42,8 +46,7 @@ namespace App.Restaurante.Repositories.Dapper
                 parameters.Add("@Descripcion", turno.Descripcion);
                 parameters.Add("@TipoCambio", turno.TipoCambio);
                 parameters.Add("@IdUsuarioApertura", turno.IdUsuarioApertura);
-                parameters.Add("@Estado", turno.Estado);
-                return connection.ExecuteAsync("usp_TurnoApertura", parameters, commandType: System.Data.CommandType.StoredProcedure);
+                return await connection.ExecuteAsync("usp_TurnoApertura", parameters, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
 

@@ -1,80 +1,79 @@
 ﻿@model IEnumerable<App.Restaurante.Models.Turno>
 
-@{
-    ViewBag.Title = "Index";
-}
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Listado de Turnos</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <p class="mb-4">
+                <a href="#" onclick="appRestaurante.getModal('@Url.Action("Create")');" data-toggle="modal"
+                   data-target="#modal-container" class="btn btn-success">
+                    <span class="fa fa-plus"></span> Aperturar Turno
 
-<h2>Index</h2>
+                </a>
+            </p>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoCambio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdUsuarioApertura)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaHoraApertura)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImporteApertura)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdUsuarioCierre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaHoraCierre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImporteCierre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th></th>
-    </tr>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TipoCambio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaHoraApertura)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImporteApertura)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th></th>
+                    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoCambio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdUsuarioApertura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaHoraApertura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImporteApertura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdUsuarioCierre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaHoraCierre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImporteCierre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.IdTurno }, new { @class = "btn btn-success" }) 
-            @Html.ActionLink("Cierre", "Cierre", new { id = item.IdTurno }, new { @class = "btn btn-danger", @OnClick = "return confirm('Seguro de Cerrar el turno?');" })
-        </td>
-    </tr>
-}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td align="right">
+                                @Html.DisplayFor(modelItem => item.TipoCambio)
+                            </td>
+                            <td align="center">
+                                @Html.DisplayFor(modelItem => item.FechaHoraApertura)
+                            </td>
+                            <td align="right">
+                                @Html.DisplayFor(modelItem => item.ImporteApertura)
+                            </td>
+                            <td align="center">
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
 
-</table>
+                            <td>
+                                <a href="#" onclick="appRestaurante.getModal('@Url.Action("Edit",new { id = item.IdTurno })');" data-toggle="modal"
+                                   data-target="#modal-container" class="btn btn-primary">
+                                    <span class="fa fa-edit"></span> Editar
+                                </a>
+                                <a href="~/turno/cierre?id=@item.IdTurno" onclick="return confirm('Seguro de Cerrar el turno?');" class="btn btn-danger">
+                                    <span class="fa fa-trash"></span> Cerrar
+                                </a>
+                                @*@Html.ActionLink("Cierre", "Cierre", new { id = item.IdTurno }, new { @class = "btn btn-danger", @OnClick = "return confirm('Seguro de Cerrar el turno?');" })*@
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@Modal.GetModal("Apertura de Turno")
+<script src="~/App_JS/appRestaurante.js" type="text/javascript"></script>

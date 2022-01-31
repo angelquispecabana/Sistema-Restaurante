@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IGrupoRepository.cs" />
+    <Compile Include="IPedidoDetalleRepository.cs" />
+    <Compile Include="IPedidoRepository.cs" />
     <Compile Include="IPlatoRepository.cs" />
     <Compile Include="IProveedorRepository.cs" />
     <Compile Include="IRepository.cs" />

@@ -26,9 +26,9 @@ namespace App.Restaurante.WebMVC.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            //ViewBag.ListaCategoria = _unit.Categorias.Listar();
+            return PartialView("_Create");
+            //ViewBag.ListaCategoria = _unitOfWork.Turnos.Listar();
             //ViewData["ListaCategoria"] = _unit.Categorias.Listar();
-            return View();
         }
         [HttpPost]
         public async Task<ActionResult> Create(Turno turno)
@@ -36,15 +36,21 @@ namespace App.Restaurante.WebMVC.Controllers
             if (ModelState.IsValid)
             {
                 await _unitOfWork.Turnos.Apertura(turno);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Turno");
+                //RedirectToAction("Index");
             }
-            return View(turno);
+            else
+            {
+                return PartialView(turno);
+            }
+
         }
 
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
-            return View(await _unitOfWork.Turnos.Obtener(id));
+            var plato = await _unitOfWork.Turnos.Obtener(id);
+            return PartialView("_Edit", plato);
         }
 
         [HttpGet]

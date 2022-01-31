@@ -21,5 +21,7 @@ namespace App.Restaurante.Models
         public DateTime FechaHoraCierre { get; set; }
         public double ImporteCierre { get; set; }
         public Boolean Estado { get; set; }
+
+        public ICollection<Pedido> PedidoCabecera { get; set; }
     }
 }

@@ -14,12 +14,16 @@ namespace App.Restaurante.Models
         [ExplicitKey]
         public int IdPlato { get; set; }
         public string Descripcion { get; set; }
-        public double Precio { get; set; }
+        public decimal Precio { get; set; }
         public int IdSubGrupo { get; set; }
         [Computed]
         public string Descripcion_SubGrupo { get; set; }
         public bool Estado { get; set; }
         [Computed]
         public IEnumerable<SubGrupo> ListaSubGrupo { get; set; }
+        [Computed]
+        public string SubGrupo { get; set; }
+        [Computed]
+        public virtual ICollection<PedidoDetalle> PedidoDetalle { get; set; }
     }
 }

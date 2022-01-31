@@ -34,9 +34,20 @@ namespace App.Restaurante.Repositories.Dapper
                 var parameters = new DynamicParameters();
                 parameters.Add("@idGrupo", idGrupo);
                 return await connection.ExecuteAsync("update from dbo.Grupo " +
-                                                "set Estado = false " +
+                                                "set Estado = 0 " +
                                                 "where IdGrupo = @idSubGrupo", parameters,
                                                 commandType: System.Data.CommandType.Text);
+            }
+        }
+
+        public async Task<int> Insertar(Grupo grupo)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Descripcion", grupo.Descripcion);
+                return await connection.ExecuteAsync("dbo.usp_InsertarGrupo", parameters,
+                                                    commandType: System.Data.CommandType.StoredProcedure);
             }
         }
     }

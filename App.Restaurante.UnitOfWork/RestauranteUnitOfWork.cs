@@ -18,6 +18,9 @@ namespace App.Restaurante.UnitOfWork
             //VentasCabecera = new VentaCabeceraRepository(connectionString);
             Turnos = new TurnoRepository(connectionString);
             Grupos = new GrupoRepository(connectionString);
+            Pedidos = new PedidoRepository(connectionString);
+            PedidosDetalle = new PedidoDetalleRepository(connectionString);
+
         }
         public IPlatoRepository Platos
         {
@@ -45,6 +48,16 @@ namespace App.Restaurante.UnitOfWork
             private set;
         }
         public IGrupoRepository Grupos
+        {
+            get;
+            private set;
+        }
+        public IPedidoRepository Pedidos
+        {
+            get;
+            private set;
+        }
+        public IPedidoDetalleRepository PedidosDetalle
         {
             get;
             private set;

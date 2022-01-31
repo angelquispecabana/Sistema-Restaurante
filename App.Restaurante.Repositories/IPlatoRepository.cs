@@ -13,5 +13,7 @@ namespace App.Restaurante.Repositories
         Task<IEnumerable<Plato>> Listar(string descripcion);
         Task<int> Eliminar(int idPlato);
         Task<int> Insertar(Plato plato);
+        IEnumerable<Plato> ListarSinTask();
+        Plato BuscarPorIdSinTask(int idPlato);
     }
 }

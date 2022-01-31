@@ -11,6 +11,7 @@ namespace App.Restaurante.Repositories
     {
         Task<IEnumerable<Turno>> BuscarPorId(int idTurno);
         Task<IEnumerable<Turno>> ListarAll();
+        IEnumerable<Turno> ListarSinTask();
         Task<int> Cierre(int idTurno);
         Task<int> Apertura(Turno turno);
     }
