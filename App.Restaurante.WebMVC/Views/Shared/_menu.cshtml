@@ -29,10 +29,23 @@
             <span>Maestros</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">                
-                <a class="collapse-item" href="~/grupo">Grupos</a>
-                <a class="collapse-item" href="~/subgrupo">SubGrupos</a>
-                <a class="collapse-item" href="~/plato">Platos</a>
+            <div class="bg-white py-2 collapse-inner rounded">
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="collapse-item" href="~/grupo">Grupos</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="collapse-item" href="~/subgrupo">SubGrupos</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="collapse-item" href="~/plato">Platos</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="collapse-item" href="~/usuario">Usuarios</a>
+                }                
             </div>
         </div>
     </li>
@@ -47,8 +60,14 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="~/turno">Turnos</a>
-                <a class="collapse-item" href="~/pedido/NuevoPedido">Nuevo Pedido</a>
+                @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                {
+                    <a class="collapse-item" href="~/turno">Turnos</a>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                {
+                    <a class="collapse-item" href="~/pedido/NuevoPedido">Nuevo Pedido</a>
+                }                
             </div>
         </div>
     </li>

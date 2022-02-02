@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace App.Restaurante.Repositories.Dapper
 {
-    public class VentaCabeceraRepository : Repository<VentaCabecera>, IVentaCabeceraRepository
+    public class VentaRepository : Repository<Venta>, IVentaRepository
     {
-        public VentaCabeceraRepository(string connectionString) : base(connectionString)
+        public VentaRepository(string connectionString) : base(connectionString)
         {
         }
 
-        public async Task<IEnumerable<VentaCabecera>> BuscarPorId(int idVenta)
+        public async Task<IEnumerable<Venta>> BuscarPorId(int idVenta)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@IdVenta", idVenta);
 
-                return await connection.QueryAsync<VentaCabecera>("dbo.usp_BuscarVentaCabecera",
+                return await connection.QueryAsync<Venta>("dbo.usp_BuscarVentaCabecera",
                     parameters, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
@@ -32,7 +32,7 @@ namespace App.Restaurante.Repositories.Dapper
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<VentaCabecera>> Listar(DateTime fechaInicial, DateTime fechaFinal)
+        public async Task<IEnumerable<Venta>> Listar(DateTime fechaInicial, DateTime fechaFinal)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -40,7 +40,7 @@ namespace App.Restaurante.Repositories.Dapper
                 parameters.Add("@FechaInicial", fechaInicial);
                 parameters.Add("@FechaFinal", fechaFinal);
 
-                return await connection.QueryAsync<VentaCabecera>("dbo.usp_ListarVentasCabecera",
+                return await connection.QueryAsync<Venta>("dbo.usp_ListarVentasCabecera",
                     parameters, commandType: System.Data.CommandType.StoredProcedure);
             }
         }

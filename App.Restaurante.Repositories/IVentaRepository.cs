@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace App.Restaurante.Repositories
 {
-    public interface IVentaCabeceraRepository : IRepository<VentaCabecera>
+    public interface IVentaRepository : IRepository<Venta>
     {
-        Task<IEnumerable<VentaCabecera>> BuscarPorId(int idVenta);
-        Task<IEnumerable<VentaCabecera>> Listar(DateTime fechaInicial, DateTime fechaFinal);
+        Task<IEnumerable<Venta>> BuscarPorId(int idVenta);
+        Task<IEnumerable<Venta>> Listar(DateTime fechaInicial, DateTime fechaFinal);
         Task<int> Eliminar(int idVenta);
     }
 }

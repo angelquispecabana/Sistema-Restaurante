@@ -17,5 +17,7 @@ namespace App.Restaurante.UnitOfWork
         IGrupoRepository Grupos { get; }
         IPedidoRepository Pedidos { get; }
         IPedidoDetalleRepository PedidosDetalle { get; }
+        IUsuarioRepository Usuarios { get; }
+        IUsuarioRolRepository UsuarioRoles { get; }
     }
 }

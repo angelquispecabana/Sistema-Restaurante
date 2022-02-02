@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace App.Restaurante.Repositories
 {
-    public interface IVentaDetalleRepository : IRepository<VentaDetalle>
+    public interface IUsuarioRolRepository
     {
-        Task<IEnumerable<Venta>> Listar(int idVenta);
+        Task<IEnumerable<UsuarioRol>> ListarRolesporUsuario(string email);
     }
 }

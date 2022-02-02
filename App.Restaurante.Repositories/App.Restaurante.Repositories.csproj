@@ -49,7 +49,9 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="ISubGrupoRepository.cs" />
     <Compile Include="ITurnoRepository.cs" />
-    <Compile Include="IVentaCabeceraRepository.cs" />
+    <Compile Include="IUsuarioRepository.cs" />
+    <Compile Include="IUsuarioRolRepository.cs" />
+    <Compile Include="IVentaRepository.cs" />
     <Compile Include="IVentaDetalleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

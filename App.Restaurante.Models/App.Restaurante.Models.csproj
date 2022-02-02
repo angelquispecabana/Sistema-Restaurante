@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grupo.cs" />
+    <Compile Include="MensajeRetorno.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="PedidoDetalle.cs" />
     <Compile Include="Plato.cs" />
@@ -77,7 +78,9 @@
     <Compile Include="Proveedor.cs" />
     <Compile Include="SubGrupo.cs" />
     <Compile Include="Turno.cs" />
-    <Compile Include="VentaCabecera.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioRol.cs" />
+    <Compile Include="Venta.cs" />
     <Compile Include="VentaDetalle.cs" />
   </ItemGroup>
   <ItemGroup>

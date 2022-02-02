@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace App.Restaurante.Models
 {
-    public class VentaCabecera
+    public class Venta
     {
         [ExplicitKey]
         public int IdVenta { get; set; }

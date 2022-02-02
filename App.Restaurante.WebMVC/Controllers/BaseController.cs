@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace App.Restaurante.WebMVC.Controllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
         protected IUnitOfWork _unitOfWork;

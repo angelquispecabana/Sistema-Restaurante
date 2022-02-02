@@ -20,7 +20,8 @@ namespace App.Restaurante.UnitOfWork
             Grupos = new GrupoRepository(connectionString);
             Pedidos = new PedidoRepository(connectionString);
             PedidosDetalle = new PedidoDetalleRepository(connectionString);
-
+            Usuarios = new UsuarioRepository(connectionString);
+            UsuarioRoles = new UsuarioRolRepository(connectionString);
         }
         public IPlatoRepository Platos
         {
@@ -58,6 +59,16 @@ namespace App.Restaurante.UnitOfWork
             private set;
         }
         public IPedidoDetalleRepository PedidosDetalle
+        {
+            get;
+            private set;
+        }
+        public IUsuarioRepository Usuarios {
+            get;
+            private set;
+        }
+
+        public IUsuarioRolRepository UsuarioRoles
         {
             get;
             private set;
