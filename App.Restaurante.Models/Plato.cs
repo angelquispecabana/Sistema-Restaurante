@@ -13,14 +13,17 @@ namespace App.Restaurante.Models
     {
         [ExplicitKey]
         public int IdPlato { get; set; }
+        [Required]
         public string Descripcion { get; set; }
+        [Required]
         public decimal Precio { get; set; }
+        [Required]
         public int IdSubGrupo { get; set; }
         [Computed]
         public string Descripcion_SubGrupo { get; set; }
         public bool Estado { get; set; }
-        [Computed]
-        public IEnumerable<SubGrupo> ListaSubGrupo { get; set; }
+        //[Computed]
+        //public IEnumerable<SubGrupo> ListaSubGrupo { get; set; }
         [Computed]
         public string SubGrupo { get; set; }
         [Computed]

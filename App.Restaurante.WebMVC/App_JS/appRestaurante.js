@@ -6,4 +6,6 @@
             $('.modal-body').html(data);
         })
     }
+  
+
 })(window.appRestaurante = window.appRestaurante || {})

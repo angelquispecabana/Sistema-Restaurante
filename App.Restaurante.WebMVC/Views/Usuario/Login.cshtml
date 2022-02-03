@@ -19,7 +19,39 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                             </div>
-                            <form class="user" action="/Usuario/Login" method="post">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Email,
+                                                        new { htmlAttributes = new { @class = "form-control form-control-user",
+                                                                                     @placeholder = "Enter Email Address..."}})
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Password, 
+                                                        new { htmlAttributes = new { @class = "form-control form-control-user",
+                                                                                     @placeholder = "Password"}})
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">
+                                                Remember
+                                                Me
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block" />
+                                </div>
+                            }
+
+                            @*<form class="user" action="/Usuario/Login" method="post">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
                                            id="Email" name="Email" aria-describedby="emailHelp"
@@ -38,23 +70,12 @@
                                         </label>
                                     </div>
                                 </div>
-                                @*<a href="index.html" class="btn btn-primary btn-user btn-block">
-                                        Login
-                                    </a>*@
+
                                 <input type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block" />
 
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                        @Html.HiddenFor(model => model.ReturnUrl, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.ReturnUrl, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                
-                            </form>
+                            </form>*@
                             <hr>
-                            @*<div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>*@
+
                             <div class="text-center">
                                 <a class="small" href="/Usuario/CreateUser">Create an Account!</a>
                             </div>

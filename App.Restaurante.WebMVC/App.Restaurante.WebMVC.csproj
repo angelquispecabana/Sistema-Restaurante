@@ -168,6 +168,8 @@
     </Compile>
     <Compile Include="Models\PedidoView.cs" />
     <Compile Include="Models\PlatoPedido.cs" />
+    <Compile Include="Models\PlatoViewModel.cs" />
+    <Compile Include="Models\SubGrupoViewModel.cs" />
     <Compile Include="Models\TurnoPedido.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

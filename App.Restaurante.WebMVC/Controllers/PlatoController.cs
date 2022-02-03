@@ -1,5 +1,6 @@
 ﻿using App.Restaurante.Models;
 using App.Restaurante.UnitOfWork;
+using App.Restaurante.WebMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,33 +23,36 @@ namespace App.Restaurante.WebMVC.Controllers
         }
         [HttpGet]
         public async Task<ActionResult> Create() {
-            Plato plato = new Plato();
-            plato.ListaSubGrupo = await _unitOfWork.SubGrupos.Listar();
-            return PartialView("_Create", plato);
+            PlatoViewModel platoViewModel = new PlatoViewModel();
+            platoViewModel.ListaSubGrupo = await _unitOfWork.SubGrupos.Listar();
+            return PartialView("_Create", platoViewModel);
         }
         [HttpPost]
-        public async Task<ActionResult> Create(Plato plato) {
+        public async Task<ActionResult> Create(PlatoViewModel platoViewModel) {
             if (ModelState.IsValid) {
+                Plato plato = SetearPlato(platoViewModel);
                 await _unitOfWork.Platos.Insertar(plato);
                 return RedirectToAction("Index");
             }
-            return PartialView(plato);
+            return PartialView("_Create", platoViewModel);
         }
         [HttpGet]
         public async Task<ActionResult> Edit(int id) {
-            var plato = await _unitOfWork.Platos.Obtener(id);
-            plato.ListaSubGrupo = await _unitOfWork.SubGrupos.Listar();
-            return PartialView("_Edit", plato);
+            PlatoViewModel platoViewModel = new PlatoViewModel();
+            platoViewModel.Plato = await _unitOfWork.Platos.Obtener(id);
+            platoViewModel.ListaSubGrupo = await _unitOfWork.SubGrupos.Listar();
+            return PartialView("_Edit", platoViewModel);
         }
         [HttpPost]
-        public async Task<ActionResult> Edit(Plato plato)
+        public async Task<ActionResult> Edit(PlatoViewModel platoViewModel)
         {
             if (ModelState.IsValid)
             {
+                Plato plato = SetearPlato(platoViewModel);
                 await _unitOfWork.Platos.Modificar(plato);
                 return RedirectToAction("Index");
             }
-            return PartialView("_Edit", plato);
+            return PartialView("_Edit", platoViewModel);
         }
         [HttpGet]
         public async Task<ActionResult> Delete(int id) {
@@ -62,6 +66,16 @@ namespace App.Restaurante.WebMVC.Controllers
             if ((await _unitOfWork.Platos.Eliminar(id)) != 0) return RedirectToAction("Index");
 
             return View(await _unitOfWork.Platos.Obtener(id));
+        }
+        private static Plato SetearPlato(PlatoViewModel platoViewModel)
+        {
+            Plato plato = new Plato();
+            plato.IdPlato = platoViewModel.Plato.IdPlato;
+            plato.Descripcion = platoViewModel.Plato.Descripcion;
+            plato.Precio = platoViewModel.Plato.Precio;
+            plato.IdSubGrupo = platoViewModel.Plato.IdSubGrupo;
+            plato.Estado = platoViewModel.Plato.Estado;
+            return plato;
         }
 
     }

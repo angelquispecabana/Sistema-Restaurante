@@ -1,41 +1,43 @@
-﻿@model App.Restaurante.Models.SubGrupo
+﻿@*@model App.Restaurante.Models.SubGrupo*@
+@model App.Restaurante.WebMVC.Models.SubGrupoViewModel
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.IdSubGrupo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SubGrupo.IdSubGrupo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdSubGrupo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.SubGrupo.IdSubGrupo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SubGrupo.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.SubGrupo.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubGrupo.Descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdGrupo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SubGrupo.IdGrupo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(M => M.IdGrupo, new SelectList(Model.ListaGrupo, "IdGrupo", "Descripcion"), "Selecciona Grupo", new { @class = "form-control" })
+                @Html.DropDownListFor(M => M.SubGrupo.IdGrupo, new SelectList(Model.ListaGrupo, "IdGrupo", "Descripcion"), "Selecciona Grupo", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SubGrupo.IdGrupo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SubGrupo.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Estado)
-                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.SubGrupo.Estado)
+                    @Html.ValidationMessageFor(model => model.SubGrupo.Estado, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
