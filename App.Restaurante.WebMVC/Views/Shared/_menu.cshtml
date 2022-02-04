@@ -22,55 +22,61 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Maestros</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                @if (User.IsInRole("Admin"))
-                {
-                    <a class="collapse-item" href="~/grupo">Grupos</a>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <a class="collapse-item" href="~/subgrupo">SubGrupos</a>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <a class="collapse-item" href="~/plato">Platos</a>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <a class="collapse-item" href="~/usuario">Usuarios</a>
-                }                
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Maestros</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="collapse-item" href="~/grupo">Grupos</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="collapse-item" href="~/subgrupo">SubGrupos</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="collapse-item" href="~/plato">Platos</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="collapse-item" href="~/usuario">Usuarios</a>
+                    }
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    }
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-           aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Ventas</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                @if (User.IsInRole("Admin") || User.IsInRole("User"))
-                {
-                    <a class="collapse-item" href="~/turno">Turnos</a>
-                }
-                @if (User.IsInRole("Admin") || User.IsInRole("User"))
-                {
-                    <a class="collapse-item" href="~/pedido/NuevoPedido">Nuevo Pedido</a>
-                }                
+    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Ventas</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <a class="collapse-item" href="~/turno">Turnos</a>
+                    }
+                    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <a class="collapse-item" href="~/pedido/NuevoPedido">Nuevo Pedido</a>
+                    }
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    }
 
     <!-- Divider -->
     <hr class="sidebar-divider">

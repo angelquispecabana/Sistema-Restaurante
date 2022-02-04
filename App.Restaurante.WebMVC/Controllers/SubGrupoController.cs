@@ -1,9 +1,12 @@
 ﻿using App.Restaurante.Models;
 using App.Restaurante.UnitOfWork;
 using App.Restaurante.WebMVC.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -18,8 +21,14 @@ namespace App.Restaurante.WebMVC.Controllers
         // GET: SubGrupo
         public async Task<ActionResult> Index()
         {
-            var listasubgrupos = await _unitOfWork.SubGrupos.Listar("");            
-            return View(listasubgrupos);
+            //var listasubgrupos = await _unitOfWork.SubGrupos.Listar("");
+
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync("https://localhost:44310/api/subgrupo");
+            var result = response.Content.ReadAsStringAsync().Result;
+            var listasubgrupos2 = JsonConvert.DeserializeObject<List<SubGrupo>>(result);
+            //return View(listasubgrupos);
+            return View(listasubgrupos2);
         }
         [HttpGet]
         public async Task<ActionResult> Create()
