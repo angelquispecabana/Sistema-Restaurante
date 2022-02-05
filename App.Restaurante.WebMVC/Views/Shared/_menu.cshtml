@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Sistema Restaurante</div>
+        <div class="sidebar-brand-text mx-3">RESTO-SIS</div>
     </a>
 
     <!-- Divider -->
@@ -72,6 +72,10 @@
                     @if (User.IsInRole("Admin") || User.IsInRole("User"))
                     {
                         <a class="collapse-item" href="~/pedido/NuevoPedido">Nuevo Pedido</a>
+                    }
+                    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <a class="collapse-item" href="~/pedido">Listado de Pedidos</a>
                     }
                 </div>
             </div>

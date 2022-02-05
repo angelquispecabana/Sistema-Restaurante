@@ -1,5 +1,6 @@
 ﻿using App.Restaurante.Models;
 using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -22,11 +23,14 @@ namespace App.Restaurante.Repositories.Dapper
             }
         }
 
-        public async Task<IEnumerable<Pedido>> ListarAll()
+        public async Task<IEnumerable<Pedido>> ListarAll(string Desde, string Hasta)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return await connection.QueryAsync<Pedido>("dbo.usp_PedidoListar", null, commandType: System.Data.CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("@Desde", Desde);
+                parameters.Add("@Hasta", Hasta);
+                return await connection.QueryAsync<Pedido>("dbo.usp_PedidoListar", parameters, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
 
@@ -61,5 +65,6 @@ namespace App.Restaurante.Repositories.Dapper
                 return Id;
             }
         }
+
     }
 }

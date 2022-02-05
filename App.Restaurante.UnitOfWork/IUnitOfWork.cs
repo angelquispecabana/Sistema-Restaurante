@@ -11,7 +11,6 @@ namespace App.Restaurante.UnitOfWork
     {
         IPlatoRepository Platos { get; }
         ISubGrupoRepository SubGrupos { get; }
-        //IVentaCabeceraRepository VentasCabecera { get; }
         IProveedorRepository Proveedores { get; }
         ITurnoRepository Turnos { get; }
         IGrupoRepository Grupos { get; }
@@ -19,5 +18,9 @@ namespace App.Restaurante.UnitOfWork
         IPedidoDetalleRepository PedidosDetalle { get; }
         IUsuarioRepository Usuarios { get; }
         IUsuarioRolRepository UsuarioRoles { get; }
+        IClienteRepository Clientes { get; }
+        ITipoDocumentoRepository TiposDocumento { get; }
+        IMedioPagoRepository MediosPago { get; }
+        IVentaRepository Ventas { get; }
     }
 }

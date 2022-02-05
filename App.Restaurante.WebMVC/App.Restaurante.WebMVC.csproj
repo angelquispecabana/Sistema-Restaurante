@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_JS\appRestaurante.js" />
+    <Content Include="App_JS\pedido.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2091,6 +2092,10 @@
     <Content Include="Views\Usuario\_Create.cshtml" />
     <Content Include="Views\Usuario\_Edit.cshtml" />
     <Content Include="Views\Usuario\_Delete.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
+    <Content Include="Views\Pedido\_FiltrosBusqueda.cshtml" />
+    <Content Include="Views\Pedido\_List.cshtml" />
+    <Content Include="Views\Pedido\_Pagar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

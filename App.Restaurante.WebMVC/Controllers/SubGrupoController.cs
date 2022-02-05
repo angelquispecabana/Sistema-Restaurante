@@ -22,12 +22,13 @@ namespace App.Restaurante.WebMVC.Controllers
         public async Task<ActionResult> Index()
         {
             //var listasubgrupos = await _unitOfWork.SubGrupos.Listar("");
+            //return View(listasubgrupos);
 
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync("https://localhost:44310/api/subgrupo");
             var result = response.Content.ReadAsStringAsync().Result;
             var listasubgrupos2 = JsonConvert.DeserializeObject<List<SubGrupo>>(result);
-            //return View(listasubgrupos);
+            
             return View(listasubgrupos2);
         }
         [HttpGet]

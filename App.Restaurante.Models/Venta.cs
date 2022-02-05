@@ -16,7 +16,8 @@ namespace App.Restaurante.Models
         public DateTime Fecha { get; set; }
         public int IdTipoDocumento { get; set; }
         public string TipoDocumento { get; set; }
-        public int IdFormaPago { get; set; }
+        public int IdMedioPago { get; set; }
+        public string NumeroDocumento { get; set; }
         public string FormaPago { get; set; }
         public int IdEstado { get; set; }
         public decimal ImporteBruto { get; set; }

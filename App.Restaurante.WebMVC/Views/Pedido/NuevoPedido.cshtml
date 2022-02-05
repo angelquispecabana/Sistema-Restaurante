@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="form-group col-12 col-sm-4">
                             @Html.LabelFor(model => model.Turnos.Fecha, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Turnos.Fecha, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                            @Html.EditorFor(model => model.Turnos.Fecha, new { htmlAttributes = new { @class = "form-control datepicker", @Value = DateTime.Now.ToString("yyyy-MM-dd") } })
                             @Html.ValidationMessageFor(model => model.Turnos.Fecha, "", new { @class = "text-danger" })
                         </div>
 
@@ -96,5 +96,5 @@
     @Scripts.Render("~/bundles/jqueryval")
 }*@
 
-@Modal.GetModal("Agrega plato", "")
+@Modal.GetModal("Agrega plato","")
 <script src="~/App_JS/appRestaurante.js" type="text/javascript"></script>

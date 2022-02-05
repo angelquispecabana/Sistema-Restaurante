@@ -15,24 +15,22 @@ namespace App.Restaurante.UnitOfWork
             Platos = new PlatoRepository(connectionString);
             Proveedores = new ProveedorRepository(connectionString);
             SubGrupos = new SubGrupoRepository(connectionString);
-            //VentasCabecera = new VentaCabeceraRepository(connectionString);
             Turnos = new TurnoRepository(connectionString);
             Grupos = new GrupoRepository(connectionString);
             Pedidos = new PedidoRepository(connectionString);
             PedidosDetalle = new PedidoDetalleRepository(connectionString);
             Usuarios = new UsuarioRepository(connectionString);
             UsuarioRoles = new UsuarioRolRepository(connectionString);
+            Clientes = new ClienteRepository(connectionString);
+            TiposDocumento = new TipoDocumentoRepository(connectionString);
+            MediosPago = new MedioPagoRepository(connectionString);
+            Ventas = new VentaRepository(connectionString);
         }
         public IPlatoRepository Platos
         {
             get;
             private set;
         }
-        //public IVentaCabeceraRepository VentasCabecera
-        //{
-        //    get;
-        //    private set;
-        //}
         public IProveedorRepository Proveedores
         {
             get;
@@ -69,6 +67,26 @@ namespace App.Restaurante.UnitOfWork
         }
 
         public IUsuarioRolRepository UsuarioRoles
+        {
+            get;
+            private set;
+        }
+        public IClienteRepository Clientes
+        {
+            get;
+            private set;
+        }
+        public ITipoDocumentoRepository TiposDocumento
+        {
+            get;
+            private set;
+        }
+        public IVentaRepository Ventas
+        {
+            get;
+            private set;
+        }
+        public IMedioPagoRepository MediosPago
         {
             get;
             private set;

@@ -61,23 +61,14 @@ namespace App.Restaurante.Repositories.Dapper
                                                     commandType: System.Data.CommandType.StoredProcedure);
             }
         }
-        public Plato BuscarPorIdSinTask(int idPlato)
+        public async Task<Plato> BuscarPorCodigo(int idPlato)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@IdPlato", idPlato);
-                return connection.QueryFirst<Plato>("dbo.usp_BuscarPlato", parameters,
+                return await connection.QueryFirstAsync<Plato>("dbo.usp_BuscarPlato", parameters,
                 commandType: System.Data.CommandType.StoredProcedure);
-            }
-        }
-        public IEnumerable<Plato> ListarSinTask()
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@Descripcion", "");
-                return connection.Query<Plato>("usp_ListarPlatos", parameters, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
     }

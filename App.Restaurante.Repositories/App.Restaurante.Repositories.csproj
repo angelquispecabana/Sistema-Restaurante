@@ -41,13 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClienteRepository.cs" />
     <Compile Include="IGrupoRepository.cs" />
+    <Compile Include="IMedioPagoRepository.cs" />
     <Compile Include="IPedidoDetalleRepository.cs" />
     <Compile Include="IPedidoRepository.cs" />
     <Compile Include="IPlatoRepository.cs" />
     <Compile Include="IProveedorRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISubGrupoRepository.cs" />
+    <Compile Include="ITipoDocumentoRepository.cs" />
     <Compile Include="ITurnoRepository.cs" />
     <Compile Include="IUsuarioRepository.cs" />
     <Compile Include="IUsuarioRolRepository.cs" />

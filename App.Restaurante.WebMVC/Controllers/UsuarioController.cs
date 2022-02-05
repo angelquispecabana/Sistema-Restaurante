@@ -22,7 +22,7 @@ namespace App.Restaurante.WebMVC.Controllers
             return View(await _unitOfWork.Usuarios.Listar());
         }
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             return PartialView("_Create");
         }

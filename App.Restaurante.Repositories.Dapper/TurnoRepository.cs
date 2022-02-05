@@ -30,14 +30,6 @@ namespace App.Restaurante.Repositories.Dapper
             }
         }
 
-        public IEnumerable<Turno> ListarSinTask()
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                return connection.Query<Turno>("usp_TurnoListar", null, commandType: System.Data.CommandType.StoredProcedure);
-            }
-        }
-
         public async Task<int> Apertura(Turno turno)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -45,11 +37,24 @@ namespace App.Restaurante.Repositories.Dapper
                 var parameters = new DynamicParameters();
                 parameters.Add("@Descripcion", turno.Descripcion);
                 parameters.Add("@TipoCambio", turno.TipoCambio);
+                parameters.Add("@ImporteApertura", turno.ImporteApertura);
                 parameters.Add("@IdUsuarioApertura", turno.IdUsuarioApertura);
                 return await connection.ExecuteAsync("usp_TurnoApertura", parameters, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
-
+        public async Task<int> Editar(Turno turno)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@IdTurno", turno.IdTurno);
+                parameters.Add("@Descripcion", turno.Descripcion);
+                parameters.Add("@TipoCambio", turno.TipoCambio);
+                parameters.Add("@ImporteApertura", turno.ImporteApertura);
+                parameters.Add("@IdUsuarioCierre", turno.IdUsuarioCierre);
+                return await connection.ExecuteAsync("usp_TurnoEditar", parameters, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
         public async Task<int> Cierre(int idTurno)
         {
             using (var connection = new SqlConnection(_connectionString))

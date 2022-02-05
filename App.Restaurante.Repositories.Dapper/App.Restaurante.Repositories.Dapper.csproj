@@ -66,7 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteRepository.cs" />
     <Compile Include="GrupoRepository.cs" />
+    <Compile Include="MedioPagoRepository.cs" />
     <Compile Include="PedidoDetalleRepository.cs" />
     <Compile Include="PedidoRepository.cs" />
     <Compile Include="PlatoRepository.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="ProveedorRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SubGrupoRepository.cs" />
+    <Compile Include="TipoDocumentoRepository.cs" />
     <Compile Include="TurnoRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />
     <Compile Include="UsuarioRolRepository.cs" />

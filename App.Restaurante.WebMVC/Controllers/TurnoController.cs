@@ -49,10 +49,19 @@ namespace App.Restaurante.WebMVC.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
-            var plato = await _unitOfWork.Turnos.Obtener(id);
-            return PartialView("_Edit", plato);
+            var turno = await _unitOfWork.Turnos.Obtener(id);
+            return PartialView("_Edit", turno);
         }
-
+        [HttpPost]
+        public async Task<ActionResult> Edit(Turno turno)
+        {
+            if (ModelState.IsValid)
+            {
+                await _unitOfWork.Turnos.Editar(turno);
+                return RedirectToAction("Index");
+            }
+            return PartialView("_Edit", turno);
+        }
         [HttpGet]
         public async Task<ActionResult> Cierre(int id)
         {

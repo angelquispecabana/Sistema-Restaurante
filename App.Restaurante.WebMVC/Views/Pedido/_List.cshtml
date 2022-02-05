@@ -1,0 +1,68 @@
+﻿@model IEnumerable<App.Restaurante.Models.Pedido>
+
+
+<div class="table-responsive">
+    <table id="pedidoTable" class="table table-bordered" width="100%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion_Turno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Importe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion_Estado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion_Turno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Importe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion_Estado)
+                </td>
+                <td>
+
+                    <a href="#" onclick="appRestaurante.getModal('@Url.Action("Pagar", new { id = item.IdPedido})');" data-toggle="modal"
+                       data-target="#modal-container" class="btn btn-success">
+                        <span class="fa fa-plus"></span> Pagar
+
+                    </a>
+
+                    @*<a href="~/pedido/pagar?idPedido=@item.IdPedido" onclick="return confirm('Seguro de pagar el pedido?');" class="btn btn-info">
+            <span class="fa fa-money"></span> Pagar
+        </a>*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@Modal.GetModal("Pagar","")
+<script src="~/App_JS/appRestaurante.js" type="text/javascript"></script>
